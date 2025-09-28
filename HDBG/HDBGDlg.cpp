@@ -26,6 +26,8 @@ CHDBGDlg::CHDBGDlg(CWnd* pParent /*=nullptr*/)
 void CHDBGDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, m_DebugerList);
+	DDX_Control(pDX, IDC_LIST2, m_ApplicationList);
 }
 
 BEGIN_MESSAGE_MAP(CHDBGDlg, CDialogEx)
