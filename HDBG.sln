@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HDBGDrv", "HDBGDrv\HDBGDrv.vcxproj", "{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HDBG", "HDBG\HDBG.vcxproj", "{8E65E139-9378-54F6-C006-BD97FF15A76B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SymbolicAccessKM", "common\SymbolicAccess\SymbolicAccessKM\SymbolicAccessKM.vcxproj", "{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|ARM64.Build.0 = Debug|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|x64.ActiveCfg = Debug|x64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|x64.Build.0 = Debug|x64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Debug|x64.Deploy.0 = Debug|x64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|ARM64.ActiveCfg = Release|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|ARM64.Build.0 = Release|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|ARM64.Deploy.0 = Release|ARM64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|x64.ActiveCfg = Release|x64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|x64.Build.0 = Release|x64
+		{F38C54DF-1C3B-A44D-3CA3-55DD7674D6BA}.Release|x64.Deploy.0 = Release|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Debug|ARM64.ActiveCfg = Debug|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Debug|ARM64.Build.0 = Debug|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Debug|x64.ActiveCfg = Debug|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Debug|x64.Build.0 = Debug|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|ARM64.ActiveCfg = Release|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|ARM64.Build.0 = Release|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|x64.ActiveCfg = Release|x64
+		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|x64.Build.0 = Release|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|ARM64.Build.0 = Debug|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|x64.ActiveCfg = Debug|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|x64.Build.0 = Debug|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Debug|x64.Deploy.0 = Debug|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|ARM64.Build.0 = Release|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|ARM64.Deploy.0 = Release|ARM64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|x64.ActiveCfg = Release|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|x64.Build.0 = Release|x64
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C0D2AB51-4D3E-4C6D-B1BC-0CB6403AD4CB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {877CD94C-9C37-451D-9DD8-0CC1BA13AA5B}
+	EndGlobalSection
+EndGlobal
