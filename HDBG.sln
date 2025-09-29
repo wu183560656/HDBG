@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{02EA68
 		common\drive_type.h = common\drive_type.h
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hvm_lib", "common\hvm\hvm_lib\hvm_lib.vcxproj", "{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -42,24 +40,9 @@ Global
 		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|ARM64.Build.0 = Release|x64
 		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|x64.ActiveCfg = Release|x64
 		{8E65E139-9378-54F6-C006-BD97FF15A76B}.Release|x64.Build.0 = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|ARM64.ActiveCfg = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|ARM64.Build.0 = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|ARM64.Deploy.0 = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|x64.ActiveCfg = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|x64.Build.0 = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Debug|x64.Deploy.0 = Debug|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|ARM64.ActiveCfg = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|ARM64.Build.0 = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|ARM64.Deploy.0 = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|x64.ActiveCfg = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|x64.Build.0 = Release|x64
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E}.Release|x64.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9D762D4A-3B5F-4B6E-9063-DA1429B7421E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {877CD94C-9C37-451D-9DD8-0CC1BA13AA5B}

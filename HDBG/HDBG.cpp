@@ -7,6 +7,8 @@
 #include "HDBG.h"
 #include "HDBGDlg.h"
 
+#include "Drive.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -52,6 +54,7 @@ BOOL CHDBGApp::InitInstance()
 
 	CWinApp::InitInstance();
 
+	Drive::Initialize();
 
 	AfxEnableControlContainer();
 

@@ -3,8 +3,10 @@
   <ItemGroup>
     <ClCompile Include="drive.cpp" />
     <ClCompile Include="dbg.cpp" />
+    <ClCompile Include="hvm_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbg.h" />
+    <ClInclude Include="hvm_loader.h" />
   </ItemGroup>
 </Project>

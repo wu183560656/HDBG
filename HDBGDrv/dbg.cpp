@@ -9,12 +9,10 @@ namespace dbg
 	bool Initialize(DBGINIT_INFORMATION* pInformation)
 	{
 		if (
-			!pInformation->DbgkCreateThread_Offset || !pInformation->DbgkCreateThread_Size ||
-			!pInformation->DbgkExitThread_Offset || !pInformation->DbgkExitThread_Size ||
-			!pInformation->DbgkMapViewOfSection_Offset || !pInformation->DbgkMapViewOfSection_Size ||
-			!pInformation->DbgkUnMapViewOfSection_Offset || !pInformation->DbgkUnMapViewOfSection_Size ||
-			!pInformation->DbgkForwardException_Offset || !pInformation->DbgkForwardException_Size ||
-			!pInformation->DbgkpQueueMessage_Offset || !pInformation->DbgkpQueueMessage_Size
+			!pInformation->DbgkCreateThread_DebugPoint.Address || !pInformation->DbgkExitThread_DebugPoint.Address ||
+			!pInformation->DbgkMapViewOfSection_DebugPoint.Address || !pInformation->DbgkUnMapViewOfSection_DebugPoint.Address ||
+			!pInformation->DbgkExitProcess_DebugPoint.Address || !pInformation->DbgkpQueueMessage_DebugPoint.Address ||
+			!pInformation->DbgkForwardException_DebugPoint.Address || !pInformation->DbgkForwardException_HideFromDebugger.Address
 			)
 		{
 			return false;

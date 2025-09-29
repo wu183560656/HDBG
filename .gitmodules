@@ -1,6 +1,0 @@
-[submodule "common/hvm"]
-	path = common/hvm
-	url = https://github.com/wu183560656/hvm.git
-[submodule "common/fylib"]
-	path = common/fylib
-	url = https://github.com/wu183560656/fylib.git

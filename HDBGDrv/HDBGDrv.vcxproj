@@ -101,14 +101,11 @@
   <ItemGroup>
     <ClCompile Include="dbg.cpp" />
     <ClCompile Include="drive.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\common\hvm\hvm_lib\hvm_lib.vcxproj">
-      <Project>{9d762d4a-3b5f-4b6e-9063-da1429b7421e}</Project>
-    </ProjectReference>
+    <ClCompile Include="hvm_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbg.h" />
+    <ClInclude Include="hvm_loader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
