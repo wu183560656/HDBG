@@ -6,7 +6,7 @@ struct SKIP_INFORMATION
 		MOV,
 		CMP
 	};
-	void* Address;
+	unsigned __int64 Address;
 	unsigned int Size;
 	TYPE Type;
 	struct
@@ -22,8 +22,9 @@ struct SKIP_INFORMATION
 
 struct DBGINIT_INFORMATION
 {
-	unsigned __int64 NtUserFindWindow;
-
+	unsigned __int64 ObpReferenceObjectByHandleWithTag_Address;
+	unsigned int EPROCESS$DebugPort_Offset;
+	unsigned int ETHREAD$HideFromDebugger_Offset;
 	SKIP_INFORMATION DbgkCreateThread_DebugPoint;
 	SKIP_INFORMATION DbgkExitThread_DebugPoint;
 	SKIP_INFORMATION DbgkMapViewOfSection_DebugPoint;

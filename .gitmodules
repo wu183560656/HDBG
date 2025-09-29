@@ -1,0 +1,12 @@
+[submodule "libs/hvm"]
+	path = libs/hvm
+	url = https://github.com/wu183560656/hvm.git
+[submodule "libs/fylib"]
+	path = libs/fylib
+	url = https://github.com/wu183560656/fylib.git
+[submodule "libs/udis86"]
+	path = libs/udis86
+	url = https://github.com/vmt/udis86.git
+[submodule "libs/beaengine"]
+	path = libs/beaengine
+	url = https://github.com/BeaEngine/beaengine.git

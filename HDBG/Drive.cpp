@@ -15,25 +15,27 @@ namespace Drive
 		FYLIB::INSTRUCTION::HDES hde;
 		PUCHAR Pos = Address;
 		do {
+			memset(&hde, 0, sizeof(hde));
 			unsigned int Len = FYLIB::INSTRUCTION::X64::Disasm(Pos, &hde);
 			if (Len == 0)
 				break;
 			if (hde.disp.disp32 == Disp)
 			{
-				pInformation->Address = Pos;
-				if (hde.opcode == 0x8B)
+				if (hde.opcode == 0x8B && hde.modrm_mod == 2)		//MOV reg,[reg+***]
 				{
+					pInformation->Address = (unsigned __int64)Pos;
 					pInformation->Type = SKIP_INFORMATION::TYPE::MOV;
-					pInformation->MOV.SourceRegister = (hde.p_rep << 4) | hde.modrm_rm;
-					pInformation->MOV.TargetRegister = (hde.p_rep << 4) | hde.modrm_mod;
+					pInformation->MOV.SourceRegister = (hde.rex_b << 3) | hde.modrm_rm;
+					pInformation->MOV.TargetRegister = (hde.rex_r << 3) | hde.modrm_reg;
 					pInformation->Size = Len;
 					result = true;
 					break;
 				}
-				else if (hde.opcode == 0x83)
+				else if (hde.opcode == 0x83 && hde.modrm_mod == 2 && hde.imm.imm32 == 0)	//CMP [reg+***],0
 				{
+					pInformation->Address = (unsigned __int64)Pos;
 					pInformation->Type = SKIP_INFORMATION::TYPE::CMP;
-					pInformation->CMP.SourceRegister = (hde.p_rep << 4) | hde.modrm_rm;
+					pInformation->CMP.SourceRegister = (hde.rex_b << 3) | hde.modrm_rm;
 					pInformation->Size = Len;
 					result = true;
 					break;
@@ -69,52 +71,52 @@ namespace Drive
 				break;
 			//获取EPROCESS.DebugPort偏移
 			ULONG EPROCESS$DebugPort_Offset = mNtoskrnl.GetStructByName(L"_EPROCESS").GetField(L"DebugPort").GetOffset();
-			ULONG ETHREAD$HideFromDebugger = mNtoskrnl.GetStructByName(L"_ETHREAD").GetField(L"HideFromDebugger").GetOffset();
+			ULONG ETHREAD$HideFromDebugger_Offset = mNtoskrnl.GetStructByName(L"_ETHREAD").GetField(L"HideFromDebugger").GetOffset();
 			//解析DbgkCreateThread
 			ULONG RVA = mNtoskrnl.GetRVAByName(L"DbgkCreateThread");
 			ULONG Size = mNtoskrnl.GetSizeByName(L"DbgkCreateThread");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkCreateThread_DebugPoint))
 				break;
-			Information.DbgkCreateThread_DebugPoint.Address = (PUCHAR)Information.DbgkCreateThread_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkCreateThread_DebugPoint.Address = Information.DbgkCreateThread_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkExitThread
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkExitThread");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkExitThread");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkExitThread_DebugPoint))
 				break;
-			Information.DbgkExitThread_DebugPoint.Address = (PUCHAR)Information.DbgkExitThread_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkExitThread_DebugPoint.Address = Information.DbgkExitThread_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkMapViewOfSection
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkMapViewOfSection");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkMapViewOfSection");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkMapViewOfSection_DebugPoint))
 				break;
-			Information.DbgkMapViewOfSection_DebugPoint.Address = (PUCHAR)Information.DbgkMapViewOfSection_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkMapViewOfSection_DebugPoint.Address = Information.DbgkMapViewOfSection_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkUnMapViewOfSection
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkUnMapViewOfSection");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkUnMapViewOfSection");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkUnMapViewOfSection_DebugPoint))
 				break;
-			Information.DbgkUnMapViewOfSection_DebugPoint.Address = (PUCHAR)Information.DbgkUnMapViewOfSection_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkUnMapViewOfSection_DebugPoint.Address = Information.DbgkUnMapViewOfSection_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkExitProcess
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkExitProcess");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkExitProcess");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkExitProcess_DebugPoint))
 				break;
-			Information.DbgkExitProcess_DebugPoint.Address = (PUCHAR)Information.DbgkExitProcess_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkExitProcess_DebugPoint.Address = Information.DbgkExitProcess_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkpQueueMessage
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkpQueueMessage");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkpQueueMessage");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkpQueueMessage_DebugPoint))
 				break;
-			Information.DbgkpQueueMessage_DebugPoint.Address = (PUCHAR)Information.DbgkpQueueMessage_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkpQueueMessage_DebugPoint.Address = Information.DbgkpQueueMessage_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 			//解析DbgkForwardException
 			RVA = mNtoskrnl.GetRVAByName(L"DbgkForwardException");
 			Size = mNtoskrnl.GetSizeByName(L"DbgkForwardException");
 			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, EPROCESS$DebugPort_Offset, &Information.DbgkForwardException_DebugPoint))
 				break;
-			Information.DbgkForwardException_DebugPoint.Address = (PUCHAR)Information.DbgkForwardException_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
-			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, ETHREAD$HideFromDebugger, &Information.DbgkForwardException_HideFromDebugger))
+			Information.DbgkForwardException_DebugPoint.Address = Information.DbgkForwardException_DebugPoint.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			if (!SearchInstruction((PUCHAR)NtoskrnlMapperBase + RVA, Size, ETHREAD$HideFromDebugger_Offset, &Information.DbgkForwardException_HideFromDebugger))
 				break;
-			Information.DbgkForwardException_HideFromDebugger.Address = (PUCHAR)Information.DbgkForwardException_HideFromDebugger.Address + (NtoskrnlBase - NtoskrnlMapperBase);
+			Information.DbgkForwardException_HideFromDebugger.Address = Information.DbgkForwardException_HideFromDebugger.Address + (NtoskrnlBase - NtoskrnlMapperBase);
 
 			result = true;
 		} while (false);

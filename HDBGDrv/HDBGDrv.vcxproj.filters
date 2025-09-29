@@ -9,4 +9,7 @@
     <ClInclude Include="dbg.h" />
     <ClInclude Include="hvm_loader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="code.asm" />
+  </ItemGroup>
 </Project>

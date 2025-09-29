@@ -1,5 +1,5 @@
 #include <ntifs.h>
-#include <hvm\hvm_lib\loader.h>
+#include <hvm\include\loader.h>
 
 static PMDL _HvmHeapPMdl = NULL;
 static PVOID _HvmHeapBaseAddress = NULL;

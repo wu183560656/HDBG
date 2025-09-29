@@ -72,4 +72,8 @@
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\libs\fylib\fylib\user\dbghelp.dll" />
+    <CopyFileToFolders Include="..\libs\fylib\fylib\user\symsrv.dll" />
+  </ItemGroup>
 </Project>
